@@ -1,5 +1,5 @@
 # RealmCrust
-Simple Crust Extension for Mapping Realm Objects From JSON. Use to easily map to/from JSON/Realm Objects.
+Simple [Crust](https://github.com/rexmas/Crust) Extension for Mapping Realm Objects From JSON. Use to easily map to/from JSON/Realm Objects.
 
 #Requirements
 iOS 8.0+
@@ -43,7 +43,7 @@ public func <- <T: Mappable, U: Mapping, C: MappingContext where U.MappedObject 
 
 #How To Use
 
-`RealmAdaptor` conforms to `Adaptor` and `RealmMapping` conforms to `Mapping`. Use with the rest of Crust just like any other `Mapping` and `Adaptor`.
+`RealmAdaptor` conforms to `Adaptor` and `RealmMapping` conforms to `Mapping`. Use with the rest of [Crust](https://github.com/rexmas/Crust) just like any other `Mapping` and `Adaptor`.
 
 E.g.
 ```swift
