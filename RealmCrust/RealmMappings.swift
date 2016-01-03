@@ -82,7 +82,7 @@ public protocol RealmMapping {
 }
 
 /// Instructions:
-/// 1. import `Crust` dependency and `RealmCrust` dependency.
+/// 1. `import Crust` and `import RealmCrust` dependencies.
 /// 2. Include this section of code in your app/lib and uncomment.
 /// This will allow our `RealmMapping` and `RealmAdaptor` to be used with Crust.
 
