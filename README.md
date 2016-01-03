@@ -1,5 +1,5 @@
 # RealmCrust
-Simple Crust Extension for Mapping Realm Objects From JSON.
+Simple Crust Extension for Mapping Realm Objects From JSON. Use to easily map to/from JSON/Realm Objects.
 
 #Requirements
 iOS 8.0+
