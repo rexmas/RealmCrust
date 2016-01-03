@@ -86,8 +86,12 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-RealmCrustTests/Realm.framework"
   install_framework "Pods-RealmCrustTests/RealmSwift.framework"
+  install_framework "Pods-RealmCrustTests/Crust.framework"
+  install_framework "Pods-RealmCrustTests/JSONValueRX.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-RealmCrustTests/Realm.framework"
   install_framework "Pods-RealmCrustTests/RealmSwift.framework"
+  install_framework "Pods-RealmCrustTests/Crust.framework"
+  install_framework "Pods-RealmCrustTests/JSONValueRX.framework"
 fi

@@ -10,4 +10,5 @@ target 'RealmCrust' do
 end
 
 target 'RealmCrustTests' do
+  pod 'Crust'
 end

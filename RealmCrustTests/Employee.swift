@@ -1,5 +1,6 @@
-import RealmSwift
 import Crust
+import RealmCrust
+import RealmSwift
 
 public class Employee: Object {
     
@@ -29,12 +30,12 @@ public class EmployeeMapping : RealmMapping {
         let companyMapping = CompanyMapping(adaptor: self.adaptor)
         
         tomap.employer              <- .Mapping("company", companyMapping) >*<
-            tomap.joinDate              <- "joinDate"  >*<
-            tomap.uuid                  <- "uuid" >*<
-            tomap.name                  <- "name" >*<
-            tomap.salary                <- "data.salary"  >*<
-            tomap.isEmployeeOfMonth     <- "data.is_employee_of_month"  >*<
-            tomap.percentYearlyRaise    <- "data.percent_yearly_raise" >*<
+        tomap.joinDate              <- "joinDate"  >*<
+        tomap.uuid                  <- "uuid" >*<
+        tomap.name                  <- "name" >*<
+        tomap.salary                <- "data.salary"  >*<
+        tomap.isEmployeeOfMonth     <- "data.is_employee_of_month"  >*<
+        tomap.percentYearlyRaise    <- "data.percent_yearly_raise" >*<
         context
     }
 }

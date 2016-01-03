@@ -1,5 +1,6 @@
-import RealmSwift
 import Crust
+import RealmCrust
+import RealmSwift
 
 public class Company: Object {
     

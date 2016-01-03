@@ -58,7 +58,7 @@ public class RealmAdaptor {
         }
     }
     
-    public func fetchObjectWithType(type: BaseType.Type, keyValues: Dictionary<String, CVarArgType>) -> BaseType? {
+    public func fetchObjectsWithType(type: BaseType.Type, keyValues: Dictionary<String, CVarArgType>) -> ResultsType {
         
         var predicates = Array<NSPredicate>()
         for (key, value) in keyValues {
@@ -68,7 +68,7 @@ public class RealmAdaptor {
         
         let andPredicate = NSCompoundPredicate.init(andPredicateWithSubpredicates: predicates)
         
-        return fetchObjectsWithType(type, predicate: andPredicate).first
+        return fetchObjectsWithType(type, predicate: andPredicate)
     }
     
     public func fetchObjectsWithType(type: BaseType.Type, predicate: NSPredicate) -> ResultsType {
@@ -77,16 +77,14 @@ public class RealmAdaptor {
     }
 }
 
-public protocol RealmMapping {
-    init(adaptor: RealmAdaptor)
-}
-
 /// Instructions:
 /// 1. `import Crust` and `import RealmCrust` dependencies.
 /// 2. Include this section of code in your app/lib and uncomment.
 /// This will allow our `RealmMapping` and `RealmAdaptor` to be used with Crust.
 
-//public extension RealmMapping : Mapping { }
+//public protocol RealmMapping {
+//    init(adaptor: RealmAdaptor)
+//}
 //public extension RealmAdaptor : Adaptor { }
 
 //public func <- <T: Mappable, U: Mapping, C: MappingContext where U.MappedObject == T>(field: List<T>, map:(key: KeyExtensions<U>, context: C)) -> C {

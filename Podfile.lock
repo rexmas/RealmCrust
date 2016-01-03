@@ -1,4 +1,7 @@
 PODS:
+  - Crust (0.0.1):
+    - JSONValueRX
+  - JSONValueRX (1.0.1)
   - Realm (0.97.0):
     - Realm/Headers (= 0.97.0)
   - Realm/Headers (0.97.0)
@@ -6,9 +9,12 @@ PODS:
     - Realm (= 0.97.0)
 
 DEPENDENCIES:
+  - Crust
   - RealmSwift
 
 SPEC CHECKSUMS:
+  Crust: fd73f687fbe11e423bda0a5d935d980dba63cc5e
+  JSONValueRX: 9cb170c7507e46a1384ee0d680dfdb850020e748
   Realm: b498a6fb9d288b171ff98d0e2d4384c295be8990
   RealmSwift: d014810dec75c9a3f1a33926d2dabfed855c582c
 

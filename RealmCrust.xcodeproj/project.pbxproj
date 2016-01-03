@@ -19,6 +19,7 @@
 		175C9A8C1C38548000B0D6E7 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175C9A871C38548000B0D6E7 /* Operators.swift */; };
 		175C9A8E1C38548000B0D6E7 /* RealmMappingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175C9A891C38548000B0D6E7 /* RealmMappingTest.swift */; };
 		23F7ADC28CC1D2D11A75A126 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAD50E89E9F222A33870B6DE /* Pods.framework */; };
+		51D7AC715BA83BE2DDB114BA /* Pods_RealmCrustTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49E804B17CB0FC27D4525475 /* Pods_RealmCrustTests.framework */; };
 		FD27CFBE2B27B62273206C22 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAD50E89E9F222A33870B6DE /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		175C9A7F1C38547700B0D6E7 /* EmployeeStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeStub.swift; sourceTree = "<group>"; };
 		175C9A871C38548000B0D6E7 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
 		175C9A891C38548000B0D6E7 /* RealmMappingTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmMappingTest.swift; sourceTree = "<group>"; };
+		49E804B17CB0FC27D4525475 /* Pods_RealmCrustTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealmCrustTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C3BF1E7B2C16A325F53C9B8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		8BCE26807D47E817F3BEC88A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		DAD50E89E9F222A33870B6DE /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,6 +69,7 @@
 			files = (
 				175C9A681C36201F00B0D6E7 /* RealmCrust.framework in Frameworks */,
 				FD27CFBE2B27B62273206C22 /* Pods.framework in Frameworks */,
+				51D7AC715BA83BE2DDB114BA /* Pods_RealmCrustTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				DAD50E89E9F222A33870B6DE /* Pods.framework */,
+				49E804B17CB0FC27D4525475 /* Pods_RealmCrustTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -302,7 +306,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RealmCrustTests/Pods-RealmCrustTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CD97FDF38AA4D62977270F9B /* Copy Pods Resources */ = {
@@ -317,7 +321,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RealmCrustTests/Pods-RealmCrustTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
