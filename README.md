@@ -26,7 +26,7 @@ Copy the following code into your project source to use RealmCrust with Crust.
 ```Swift
 /// Instructions:
 /// 1. `import Crust` and `import RealmCrust` dependencies.
-/// 2. Include this section of code in your app/lib and uncomment.
+/// 2. Include this section of code in your app/lib.
 /// This will allow our `RealmMapping` and `RealmAdaptor` to be used with Crust.
 
 public protocol RealmMapping {
