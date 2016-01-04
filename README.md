@@ -9,7 +9,8 @@ iOS 8.0+
 Swift 2.1+
 
 #Installation
-### CocoaPods
+
+### Pods
 ```
 platform :ios, '8.0'
 use_frameworks!
