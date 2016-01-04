@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "RealmCrust"
-  s.version          = "0.0.2"
+  s.version          = "0.0.3"
   s.summary          = "Simple Crust Extension for Mapping Realm Objects From JSON"
 
 # This description is used to generate tags and improve search results.
