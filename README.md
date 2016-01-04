@@ -1,3 +1,6 @@
+[![Cocoapods Compatible](https://img.shields.io/cocoapods/v/RealmCrust.svg)](https://img.shields.io/cocoapods/v/RealmCrust.svg)
+[![Build Status](https://travis-ci.org/rexmas/RealmCrust.svg)](https://travis-ci.org/rexmas/RealmCrust)
+
 # RealmCrust
 Simple [Crust](https://github.com/rexmas/Crust) Extension for Mapping Realm Objects From JSON. Use to easily map to/from JSON/Realm Objects.
 
