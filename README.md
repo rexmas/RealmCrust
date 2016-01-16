@@ -32,7 +32,7 @@ Copy the following code into your project source to use RealmCrust with Crust.
 public protocol RealmMapping {
     init(adaptor: RealmAdaptor)
 }
-public extension RealmAdaptor : Adaptor { }
+extension RealmAdaptor : Adaptor { }
 
 public func <- <T: Mappable, U: Mapping, C: MappingContext where U.MappedObject == T>(field: List<T>, map:(key: KeyExtensions<U>, context: C)) -> C {
 
