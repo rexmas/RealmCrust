@@ -2,13 +2,17 @@
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'RealmSwift'
-
-link_with 'RealmCrust', 'RealmCrustTests'
+def shared_pods
+  pod 'RealmSwift'
+end
 
 target 'RealmCrust' do
+  shared_pods
+  link_with 'RealmCrust'
 end
 
 target 'RealmCrustTests' do
+  shared_pods
   pod 'Crust'
+  link_with 'RealmCrustTests'
 end
