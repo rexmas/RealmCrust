@@ -1,3 +1,6 @@
+[![Cocoapods Compatible](https://img.shields.io/cocoapods/v/Crust.svg)](https://img.shields.io/cocoapods/v/Crust.svg)
+[![Build Status](https://travis-ci.org/rexmas/Crust.svg)](https://travis-ci.org/rexmas/Crust)
+
 #Crust
 A flexible Swift framework for converting classes and structs to and from JSON with support for storage solutions such as Realm.
 
@@ -227,7 +230,7 @@ The object conforming to `Adaptor` must include two `typealias`s:
 The `Mapping` must then set it's `typealias AdaptorKind = <Your Adaptor>` to use it during mapping.
 
 #Realm
-Realm support is coming shortly.
+https://github.com/rexmas/RealmCrust
 
 #Contributing
 

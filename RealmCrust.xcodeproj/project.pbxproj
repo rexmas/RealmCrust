@@ -18,9 +18,8 @@
 		175C9A861C38547700B0D6E7 /* EmployeeStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175C9A7F1C38547700B0D6E7 /* EmployeeStub.swift */; };
 		175C9A8C1C38548000B0D6E7 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175C9A871C38548000B0D6E7 /* Operators.swift */; };
 		175C9A8E1C38548000B0D6E7 /* RealmMappingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175C9A891C38548000B0D6E7 /* RealmMappingTest.swift */; };
-		23F7ADC28CC1D2D11A75A126 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAD50E89E9F222A33870B6DE /* Pods.framework */; };
 		51D7AC715BA83BE2DDB114BA /* Pods_RealmCrustTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49E804B17CB0FC27D4525475 /* Pods_RealmCrustTests.framework */; };
-		FD27CFBE2B27B62273206C22 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAD50E89E9F222A33870B6DE /* Pods.framework */; };
+		9695D55E4235AE8C7A8D986A /* Pods_RealmCrust.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 427FF0E2A354B67030D82FD9 /* Pods_RealmCrust.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E234D4DFBBC77280B5A7F0C /* Pods-RealmCrustTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealmCrustTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RealmCrustTests/Pods-RealmCrustTests.debug.xcconfig"; sourceTree = "<group>"; };
 		175C9A5D1C36201F00B0D6E7 /* RealmCrust.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RealmCrust.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		175C9A601C36201F00B0D6E7 /* RealmCrust.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RealmCrust.h; sourceTree = "<group>"; };
 		175C9A621C36201F00B0D6E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -48,9 +48,11 @@
 		175C9A7F1C38547700B0D6E7 /* EmployeeStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeStub.swift; sourceTree = "<group>"; };
 		175C9A871C38548000B0D6E7 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
 		175C9A891C38548000B0D6E7 /* RealmMappingTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmMappingTest.swift; sourceTree = "<group>"; };
+		19747EF8784C17853A89AB2A /* Pods-RealmCrust.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealmCrust.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RealmCrust/Pods-RealmCrust.debug.xcconfig"; sourceTree = "<group>"; };
+		2E1157565D252338BBAF5F61 /* Pods-RealmCrust.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealmCrust.release.xcconfig"; path = "Pods/Target Support Files/Pods-RealmCrust/Pods-RealmCrust.release.xcconfig"; sourceTree = "<group>"; };
+		30BEDEDFDD4FAB59E75DE3E0 /* Pods-RealmCrustTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealmCrustTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RealmCrustTests/Pods-RealmCrustTests.release.xcconfig"; sourceTree = "<group>"; };
+		427FF0E2A354B67030D82FD9 /* Pods_RealmCrust.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealmCrust.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49E804B17CB0FC27D4525475 /* Pods_RealmCrustTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealmCrustTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5C3BF1E7B2C16A325F53C9B8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		8BCE26807D47E817F3BEC88A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		DAD50E89E9F222A33870B6DE /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -59,7 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23F7ADC28CC1D2D11A75A126 /* Pods.framework in Frameworks */,
+				9695D55E4235AE8C7A8D986A /* Pods_RealmCrust.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,7 +70,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				175C9A681C36201F00B0D6E7 /* RealmCrust.framework in Frameworks */,
-				FD27CFBE2B27B62273206C22 /* Pods.framework in Frameworks */,
 				51D7AC715BA83BE2DDB114BA /* Pods_RealmCrustTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -127,6 +128,7 @@
 			children = (
 				DAD50E89E9F222A33870B6DE /* Pods.framework */,
 				49E804B17CB0FC27D4525475 /* Pods_RealmCrustTests.framework */,
+				427FF0E2A354B67030D82FD9 /* Pods_RealmCrust.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -134,8 +136,10 @@
 		CBF08C537AD416846E797CC7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				5C3BF1E7B2C16A325F53C9B8 /* Pods.debug.xcconfig */,
-				8BCE26807D47E817F3BEC88A /* Pods.release.xcconfig */,
+				19747EF8784C17853A89AB2A /* Pods-RealmCrust.debug.xcconfig */,
+				2E1157565D252338BBAF5F61 /* Pods-RealmCrust.release.xcconfig */,
+				0E234D4DFBBC77280B5A7F0C /* Pods-RealmCrustTests.debug.xcconfig */,
+				30BEDEDFDD4FAB59E75DE3E0 /* Pods-RealmCrustTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -276,7 +280,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RealmCrust/Pods-RealmCrust-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5FD879838C878D50C51526F6 /* Check Pods Manifest.lock */ = {
@@ -452,7 +456,7 @@
 		};
 		175C9A721C36201F00B0D6E7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5C3BF1E7B2C16A325F53C9B8 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 19747EF8784C17853A89AB2A /* Pods-RealmCrust.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
@@ -471,7 +475,7 @@
 		};
 		175C9A731C36201F00B0D6E7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8BCE26807D47E817F3BEC88A /* Pods.release.xcconfig */;
+			baseConfigurationReference = 2E1157565D252338BBAF5F61 /* Pods-RealmCrust.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
@@ -489,7 +493,7 @@
 		};
 		175C9A751C36201F00B0D6E7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5C3BF1E7B2C16A325F53C9B8 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 0E234D4DFBBC77280B5A7F0C /* Pods-RealmCrustTests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = RealmCrustTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -500,7 +504,7 @@
 		};
 		175C9A761C36201F00B0D6E7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8BCE26807D47E817F3BEC88A /* Pods.release.xcconfig */;
+			baseConfigurationReference = 30BEDEDFDD4FAB59E75DE3E0 /* Pods-RealmCrustTests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = RealmCrustTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
