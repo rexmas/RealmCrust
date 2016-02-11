@@ -10,14 +10,12 @@ public struct CRMappingOptions : OptionSetType {
     public static let AllowDuplicatesInCollection = CRMappingOptions(rawValue: 1)
 }
 
-public protocol Mappable { }
-
 public protocol Mapping {
-    typealias MappedObject: Mappable
+    typealias MappedObject
     typealias AdaptorKind: Adaptor
     
     var adaptor: AdaptorKind { get }
-    var primaryKeys: Array<CRMappingKey> { get }
+    var primaryKeys: Dictionary<String, CRMappingKey>? { get }
     
     func mapping(inout tomap: MappedObject, context: MappingContext)
 }
@@ -30,7 +28,7 @@ public protocol Adaptor {
     func mappingEnded() throws
     func mappingErrored(error: ErrorType)
     
-    func fetchObjectsWithType(type: BaseType.Type, keyValues: Dictionary<String, CVarArgType>) -> ResultsType
+    func fetchObjectsWithType(type: BaseType.Type, keyValues: Dictionary<String, CVarArgType>) -> ResultsType?
     func createObject(objType: BaseType.Type) throws -> BaseType
     func deleteObject(obj: BaseType) throws
     func saveObjects(objects: [ BaseType ]) throws

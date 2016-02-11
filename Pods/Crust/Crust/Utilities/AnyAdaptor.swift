@@ -1,5 +1,5 @@
 /// `MappedObject` type constraint required in `AnyMapping`.
-public protocol AnyMappable : Mappable {
+public protocol AnyMappable {
     init()
 }
 
@@ -15,8 +15,8 @@ public extension AnyMapping {
         return AnyAdaptorImp<MappedObject>()
     }
     
-    var primaryKeys: Array<CRMappingKey> {
-        return []
+    var primaryKeys: Dictionary<String, CRMappingKey>? {
+        return nil
     }
 }
 
@@ -42,8 +42,8 @@ public extension AnyAdaptor {
     func mappingEnded() throws { }
     func mappingErrored(error: ErrorType) { }
     
-    func fetchObjectsWithType(type: BaseType.Type, keyValues: Dictionary<String, CVarArgType>) -> Array<BaseType> {
-        return Array<BaseType>()
+    func fetchObjectsWithType(type: BaseType.Type, keyValues: Dictionary<String, CVarArgType>) -> Array<BaseType>? {
+        return nil
     }
     
     func createObject(objType: BaseType.Type) throws -> BaseType {
