@@ -32,13 +32,14 @@ public class RealmAdaptor {
     
     public func createObject(objType: BaseType.Type) throws -> BaseType {
         let obj = objType.init()
-        try self.saveObjects([ obj ])
         return obj
     }
     
     public func saveObjects(objects: [BaseType]) throws {
         let saveBlock = {
-            self.realm.add(objects)
+            for obj in objects {
+                self.realm.add(objects, update: obj.dynamicType.primaryKey() != nil)
+            }
         }
         if self.realm.inWriteTransaction {
             saveBlock()
@@ -58,7 +59,7 @@ public class RealmAdaptor {
         }
     }
     
-    public func fetchObjectsWithType(type: BaseType.Type, keyValues: Dictionary<String, CVarArgType>) -> ResultsType {
+    public func fetchObjectsWithType(type: BaseType.Type, keyValues: Dictionary<String, CVarArgType>) -> ResultsType? {
         
         var predicates = Array<NSPredicate>()
         for (key, value) in keyValues {
@@ -71,7 +72,12 @@ public class RealmAdaptor {
         return fetchObjectsWithType(type, predicate: andPredicate)
     }
     
-    public func fetchObjectsWithType(type: BaseType.Type, predicate: NSPredicate) -> ResultsType {
+    public func fetchObjectsWithType(type: BaseType.Type, predicate: NSPredicate) -> ResultsType? {
+        
+        if type.primaryKey() != nil {
+            // We're going to build an unstored object and update when saving based on the primary key.
+            return nil
+        }
         
         return realm.objects(type).filter(predicate)
     }
@@ -87,7 +93,7 @@ public class RealmAdaptor {
 //}
 //extension RealmAdaptor : Adaptor { }
 
-//public func <- <T: Mappable, U: Mapping, C: MappingContext where U.MappedObject == T>(field: List<T>, map:(key: KeyExtensions<U>, context: C)) -> C {
+//public func <- <T, U: Mapping, C: MappingContext where U.MappedObject == T>(field: List<T>, map:(key: KeyExtensions<U>, context: C)) -> C {
 
     // Realm specifies that List "must be declared with 'let'". Seems to actually work either way in practice, but for safety
     // we're going to include a List mapper that accepts fields with a 'let' declaration and forward to our

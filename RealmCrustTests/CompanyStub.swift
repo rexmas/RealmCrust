@@ -27,11 +27,11 @@ class CompanyStub {
     func generateJsonObject() -> Dictionary<String, AnyObject> {
         let founder = self.founder?.generateJsonObject()
         return [
-            "uuid" : uuid,
             "name" : name,
             "employees" : employees.map { $0.generateJsonObject() } as NSArray,
             "founder" : founder == nil ? NSNull() : founder! as NSDictionary,
             "data" : [
+                "uuid" : uuid,
                 "lawsuits" : [
                     "pending" : pendingLawsuits
                 ]
