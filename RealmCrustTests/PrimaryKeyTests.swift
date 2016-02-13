@@ -109,4 +109,26 @@ class PrimaryKeyTests: RealmMappingTest {
         XCTAssertEqual(object.uuid, "primary1")
         XCTAssertEqual(object.class2s.count, 2)
     }
+    
+    func testMappingsWithPrimaryKeysForAlreadyPresentObject() {
+        
+        let obj = PrimaryObj2()
+        obj.uuid = "primary2"
+        try! realm!.write {
+            realm!.add(obj)
+        }
+        
+        let json2Dict = [ "data.more_data.uuid" : "primary2", "class1" : [ "data" : [ "uuid" : "primary1" ] ] ]
+        
+        XCTAssertEqual(realm!.objects(PrimaryObj1).count, 0)
+        XCTAssertEqual(realm!.objects(PrimaryObj2).count, 1)
+        
+        let json = try! JSONValue(object: json2Dict)
+        let mapper = CRMapper<PrimaryObj2, PrimaryObj2Mapping>()
+        let object = try! mapper.mapFromJSONToExistingObject(json, mapping: PrimaryObj2Mapping(adaptor: adaptor!))
+        
+        XCTAssertEqual(realm!.objects(PrimaryObj2).count, 1)
+        XCTAssertEqual(realm!.objects(PrimaryObj2).count, 1)
+        XCTAssertEqual(object, obj)
+    }
 }
