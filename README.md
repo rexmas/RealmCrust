@@ -61,8 +61,6 @@ public class Company: Object {
     public dynamic var pendingLawsuits: Int = 0
 }
 
-extension Company: Mappable { }
-
 public class CompanyMapping : RealmMapping {
     
     public var adaptor: RealmAdaptor
@@ -87,6 +85,9 @@ public class CompanyMapping : RealmMapping {
     }
 }
 ```
+
+#Threading
+`RealmAdaptor` is not thread safe. Be sure to create a new `RealmAdaptor` for each thread.
 
 #License
 The MIT License (MIT)
