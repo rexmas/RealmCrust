@@ -4,4 +4,4 @@ xcode_workspace: RealmCrust.xcworkspace
 xcode_scheme: RealmCrust
 xcode_sdk: iphonesimulator9.1
 script:
- - xcodebuild -workspace RealmCrust.xcworkspace -scheme RealmCrust -sdk iphonesimulator build test
+ - xcodebuild -workspace RealmCrust.xcworkspace -scheme RealmCrust -destination 'platform=iOS Simulator,OS=9.2,name=iPhone 6s' build test
