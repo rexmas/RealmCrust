@@ -64,8 +64,8 @@ public class Company: Object {
 public class CompanyMapping : RealmMapping {
     
     public var adaptor: RealmAdaptor
-    public var primaryKeys: Array<CRMappingKey> {
-        return [ "uuid" ]
+    public var primaryKeys: Dictionary<String, CRMappingKey> {
+        return [ "uuid" : "data.uuid" ]
     }
     
     public required init(adaptor: RealmAdaptor) {
@@ -77,8 +77,8 @@ public class CompanyMapping : RealmMapping {
         
         tomap.employees             <- .Mapping("employees", employeeMapping) >*<
         tomap.founder               <- .Mapping("founder", employeeMapping) >*<
-        tomap.uuid                  <- "uuid" >*<
-        tomap.name                  <- "name" >*<
+        tomap.uuid                  <- "data.uuid" >*<
+        tomap.name                  <- "data.name" >*<
         tomap.foundingDate          <- "data.founding_date"  >*<
         tomap.pendingLawsuits       <- "data.lawsuits.pending"  >*<
         context
