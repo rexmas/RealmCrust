@@ -33,7 +33,7 @@ pod 'Crust'
 #Structs and Classes
 Can map to/from classes or structs
 ```swift
-class Company : Mappable {
+class Company {
         
     var employees = Array<Employee>()
     var uuid: String = ""
@@ -58,16 +58,20 @@ struct Person : AnyMappable {
 
 By design Crust is built with [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns) in mind. It makes no assumptions about how many ways a user would like to map to and from JSON and how many various ways the user would like to store their models.
 
-Crust has 3 basic protocols:
-- `Mappable`
-	- The model (class or struct) to be mapped to and from JSON.
+Crust has 2 basic protocols:
 - `Mapping`
-	- How to map JSON to and from a particular `Mappable` model.
+	- How to map JSON to and from a particular model - (model is set by the `typealias MappedObject`).
 	- May include primary key(s) and nested mapping(s).
 - `Adaptor`
 	- How to store and retrieve model objects used for mapping from a backing store (e.g. Core Data, Realm, etc.).
 
-There are no limitations on the number of various `Mapping`s and `Adaptor`s one may create per `Mappable` model for different use cases.
+And 2 additional protocols when no storage `Adaptor` is required:
+- `AnyMappable`
+	- Inherited from the model (class or struct) to be mapped to and from JSON.
+- `AnyMapping`
+	- A `Mapping` that does not require an `Adaptor`.
+
+There are no limitations on the number of various `Mapping`s and `Adaptor`s one may create per model for different use cases.
 
 #JSONValue for type safe JSON
 Crust relies on [JSONValue](https://github.com/rexmas/JSONValue) for it's JSON encoding and decoding mechanism. It offers many benefits including type safety, subscripting, and extensibility through protocols.
@@ -81,8 +85,8 @@ Crust relies on [JSONValue](https://github.com/rexmas/JSONValue) for it's JSON e
     class EmployeeMapping : Mapping {
     
         var adaptor: CoreDataAdaptor
-        var primaryKeys: Array<CRMappingKey> {
-            return [ "uuid" ]
+        var primaryKeys: Dictionary<String, CRMappingKey>? {
+            return [ "uuid" : "data.uuid" ]    // Key == attribute on the model, Value == keypath in the JSON blob.
         }
 
         required init(adaptor: CoreDataAdaptor) {
@@ -94,7 +98,7 @@ Crust relies on [JSONValue](https://github.com/rexmas/JSONValue) for it's JSON e
             let companyMapping = CompanyTransformableMapping()
         
             tomap.employer              <- .Mapping("company", companyMapping) >*<
-            tomap.uuid                  <- "uuid" >*<
+            tomap.uuid                  <- "data.uuid" >*<
             tomap.name                  <- "data.name" >*<
             context
         }

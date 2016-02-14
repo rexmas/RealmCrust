@@ -34,7 +34,7 @@ public protocol RealmMapping {
 }
 extension RealmAdaptor : Adaptor { }
 
-public func <- <T: Mappable, U: Mapping, C: MappingContext where U.MappedObject == T>(field: List<T>, map:(key: KeyExtensions<U>, context: C)) -> C {
+public func <- <T, U: Mapping, C: MappingContext where U.MappedObject == T>(field: List<T>, map:(key: KeyExtensions<U>, context: C)) -> C {
 
     // Realm specifies that List "must be declared with 'let'". Seems to actually work either way in practice, but for safety
     // we're going to include a List mapper that accepts fields with a 'let' declaration and forward to our
@@ -61,8 +61,6 @@ public class Company: Object {
     public dynamic var pendingLawsuits: Int = 0
 }
 
-extension Company: Mappable { }
-
 public class CompanyMapping : RealmMapping {
     
     public var adaptor: RealmAdaptor
@@ -87,6 +85,9 @@ public class CompanyMapping : RealmMapping {
     }
 }
 ```
+
+#Threading
+`RealmAdaptor` is not thread safe. Be sure to create a new `RealmAdaptor` for each thread.
 
 #License
 The MIT License (MIT)

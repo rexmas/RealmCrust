@@ -13,13 +13,11 @@ public class Employee: Object {
     public dynamic var percentYearlyRaise: Double = 0.0
 }
 
-extension Employee: Mappable { }
-
 public class EmployeeMapping : RealmMapping {
     
     public var adaptor: RealmAdaptor
-    public var primaryKeys: Array<CRMappingKey> {
-        return [ "uuid" ]
+    public var primaryKeys: Dictionary<String, CRMappingKey>? {
+        return [ "uuid" : "uuid" ]
     }
     
     public required init(adaptor: RealmAdaptor) {

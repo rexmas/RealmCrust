@@ -10,15 +10,17 @@ public class Company: Object {
     public dynamic var foundingDate: NSDate = NSDate()
     public dynamic var founder: Employee?
     public dynamic var pendingLawsuits: Int = 0
+    
+    public override class func primaryKey() -> String? {
+        return "uuid"
+    }
 }
-
-extension Company: Mappable { }
 
 public class CompanyMapping : RealmMapping {
     
     public var adaptor: RealmAdaptor
-    public var primaryKeys: Array<CRMappingKey> {
-        return [ "uuid" ]
+    public var primaryKeys: Dictionary<String, CRMappingKey>? {
+        return [ "uuid" : "data.uuid" ]
     }
     
     public required init(adaptor: RealmAdaptor) {
@@ -30,7 +32,7 @@ public class CompanyMapping : RealmMapping {
         
         tomap.employees             <- .Mapping("employees", employeeMapping) >*<
         tomap.founder               <- .Mapping("founder", employeeMapping) >*<
-        tomap.uuid                  <- "uuid" >*<
+        tomap.uuid                  <- "data.uuid" >*<
         tomap.name                  <- "name" >*<
         tomap.foundingDate          <- "data.founding_date"  >*<
         tomap.pendingLawsuits       <- "data.lawsuits.pending"  >*<
@@ -46,7 +48,7 @@ public class CompanyMappingWithDupes : CompanyMapping {
         
         tomap.employees             <- .MappingOptions(mappingExtension, [ .AllowDuplicatesInCollection ]) >*<
         tomap.founder               <- .Mapping("founder", employeeMapping) >*<
-        tomap.uuid                  <- "uuid" >*<
+        tomap.uuid                  <- "data.uuid" >*<
         tomap.name                  <- "name" >*<
         tomap.foundingDate          <- "data.founding_date"  >*<
         tomap.pendingLawsuits       <- "data.lawsuits.pending"  >*<

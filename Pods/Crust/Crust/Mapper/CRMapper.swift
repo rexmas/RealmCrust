@@ -15,12 +15,12 @@ extension Int : CRMappingKey { }
 
 public class MappingContext {
     public var json: JSONValue
-    public var object: Mappable
+    public var object: Any
     public private(set) var dir: MappingDirection
     public internal(set) var error: ErrorType?
     public internal(set) var parent: MappingContext? = nil
     
-    init(withObject object:Mappable, json: JSONValue, direction: MappingDirection) {
+    init(withObject object: Any, json: JSONValue, direction: MappingDirection) {
         self.dir = direction
         self.object = object
         self.json = json
@@ -28,7 +28,7 @@ public class MappingContext {
 }
 
 /// Method caller used to perform mappings.
-public struct CRMapper<T: Mappable, U: Mapping where U.MappedObject == T> {
+public struct CRMapper<T, U: Mapping where U.MappedObject == T> {
     
     public init() { }
     
@@ -62,39 +62,42 @@ public struct CRMapper<T: Mappable, U: Mapping where U.MappedObject == T> {
 public extension Mapping {
     func getExistingInstanceFromJSON(json: JSONValue) throws -> MappedObject? {
         
-        // NOTE: This sux but `MappedObject: AdaptorKind.BaseType` as a type constraint throws a compiler error as of 7.1 Xcode
-        // and `MappedObject == AdaptorKind.BaseType` doesn't work with sub-types (i.e. expects MappedObject to be that exact type)
-        guard MappedObject.self is AdaptorKind.BaseType.Type else {
-            let userInfo = [ NSLocalizedFailureReasonErrorKey : "Type of object \(MappedObject.self) is not a subtype of \(AdaptorKind.BaseType.self)" ]
-            throw NSError(domain: CRMappingDomain, code: -1, userInfo: userInfo)
+        try self.checkForAdaptorBaseTypeConformance()
+        
+        guard let primaryKeys = self.primaryKeys else {
+            return nil
         }
         
-        let primaryKeys = self.primaryKeys
         var keyValues = [ String : CVarArgType ]()
-        try primaryKeys.forEach {
-            let keyPath = $0.keyPath
+        try primaryKeys.forEach { primaryKey, jsonKey in
+            let keyPath = jsonKey.keyPath
             if let val = json[keyPath] {
-                keyValues[keyPath] = val.valuesAsNSObjects()
+                keyValues[primaryKey] = val.valuesAsNSObjects()
             } else {
                 let userInfo = [ NSLocalizedFailureReasonErrorKey : "Primary key of \(keyPath) does not exist in JSON but is expected from mapping \(Self.self)" ]
                 throw NSError(domain: CRMappingDomain, code: -1, userInfo: userInfo)
             }
         }
         
-        let obj = self.adaptor.fetchObjectsWithType(MappedObject.self as! AdaptorKind.BaseType.Type, keyValues: keyValues).first
+        let obj = self.adaptor.fetchObjectsWithType(MappedObject.self as! AdaptorKind.BaseType.Type, keyValues: keyValues)?.first
         return obj as! MappedObject?
     }
     
     func getNewInstance() throws -> MappedObject {
         
+        try self.checkForAdaptorBaseTypeConformance()
+        
+        return try self.adaptor.createObject(MappedObject.self as! AdaptorKind.BaseType.Type) as! MappedObject
+    }
+    
+    internal func checkForAdaptorBaseTypeConformance() throws {
         // NOTE: This sux but `MappedObject: AdaptorKind.BaseType` as a type constraint throws a compiler error as of 7.1 Xcode
         // and `MappedObject == AdaptorKind.BaseType` doesn't work with sub-types (i.e. expects MappedObject to be that exact type)
+        
         guard MappedObject.self is AdaptorKind.BaseType.Type else {
             let userInfo = [ NSLocalizedFailureReasonErrorKey : "Type of object \(MappedObject.self) is not a subtype of \(AdaptorKind.BaseType.self)" ]
             throw NSError(domain: CRMappingDomain, code: -1, userInfo: userInfo)
         }
-        
-        return try self.adaptor.createObject(MappedObject.self as! AdaptorKind.BaseType.Type) as! MappedObject
     }
     
     internal func startMappingWithContext(context: MappingContext) throws {
@@ -139,6 +142,15 @@ public extension Mapping {
         
         self.executeMappingWithObject(&object, context: context)
         
+        if context.error == nil {
+            do {
+                try self.checkForAdaptorBaseTypeConformance()
+                try self.adaptor.saveObjects([ object as! AdaptorKind.BaseType ])
+            } catch let error as NSError {
+                context.error = error
+            }
+        }
+        
         if let error = context.error {
             if context.parent == nil {
                 self.adaptor.mappingErrored(error)
@@ -151,6 +163,3 @@ public extension Mapping {
         context.object = object
     }
 }
-
-// For Network lib have something along the lines of. Will need to properly handle the typing constraints.
-// func registerMapping(mapping: Mapping, forPath path: URLPath)
